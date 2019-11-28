@@ -3,7 +3,7 @@
 * URL for Login: localhost:3000/users/login
 
 > Input data: {"email": "nehachikode@gmail.com",
-               "password": "imran"}
+               "password": "neha123"}
             
 > Output: {
     "message": "User logged in successfully!",
