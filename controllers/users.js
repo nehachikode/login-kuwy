@@ -9,7 +9,7 @@ module.exports = {
         //for live body will be req.body
         let body = {
             email: "nehachikode@gmail.com",
-            password: "imran"
+            password: "neha123"
         }
 
         if (!body.email || !body.password) {
@@ -47,7 +47,7 @@ module.exports = {
             hash = checkUser[0].password = dbPassword 
         */
 
-        let dbPassword = "$2b$10$4zIxwlTcN7Q1ODzzTi6z5e0e/iyizk4CcMxzrHQWn7/A8P4JhO45i";
+        let dbPassword = "$2b$10$Ms1Wfmf22tn1zceKoUTFrOo9c9JHppfKe4LTQHtweeYjP3jjzbcj2";
         try {
             bcrypt.compare(password, dbPassword, function (err, result) {
                 if (err) {
