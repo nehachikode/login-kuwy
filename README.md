@@ -16,6 +16,11 @@
 
 * URL for Loan page: localhost:3000/loan/show
 
+> headers: {
+authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuZWhhY2hpa29kZUBnbWFpbC5jb20iLCJpYXQiOjE1NzQ5NDA1NDksImV4cCI6MTU3NDk0NDE0OX0.-WKvUOdGHyvz0xRe3YAeb31wI_qrdAAmg1bkoLV_J6NpphJv9r8oz98rcDUx6NpyGeR58zvAqyRsmTKeeGc7Xg
+}
+
+
 > Output: {
     "message": "Info!",
     "data": {
@@ -38,6 +43,3 @@
     "err": null
 }
 
-
-
-Note: As DB is not connected, I've commmented out the DB connection code and file.
