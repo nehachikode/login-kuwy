@@ -29,7 +29,15 @@ module.exports = {
             "income_proof": "yes",
             "guarantor": "no",
             "place_of_study": "Bangalore",
-        }
+        };
+
+
+        /* 
+            As auth is added, we can access user info with 
+            let userId = req.userId;
+            let userNmae = req.userName;
+        */
+
 
         let roi = 16.70,
             tenure = 36;

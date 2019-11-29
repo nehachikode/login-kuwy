@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const { generateToken } = require('../helpers/global');
-//const con = require('../config/dbConfig');
+const con = require('../config/dbConfig');
 const userModel = require('../models/users');
 
 module.exports = {
@@ -20,20 +20,17 @@ module.exports = {
             password = body.password;
 
         //first check user is exist or not
-        /*
-            As DB is not connected, commenting the code
+        try {
+            var checkUser = await userModel.checkEmail(con, email);
+        } catch (error) {
+            return res.status(500).send({ message: 'Something went wrong!', data: null, err: error });
+        }
 
-            try {
-                var checkUser = await userModel.checkEmail(con, email);
-            } catch (error) {
-                return res.status(500).send({ message: 'Something went wrong!', data: null, err: error });
-            }
+        //if not
+        if (!checkUser.length) {
+            return res.status(200).send({ message: 'User is not registered!', data: null, err: null });
+        }
 
-            //if not
-            if (!checkUser.length) {
-                return res.status(200).send({ message: 'User is not registered!', data: null, err: null });
-            }
-        */
 
         //if yes
         /* while registering the user, password will be saved in encrypted format
@@ -44,12 +41,11 @@ module.exports = {
         */
 
         /* so DB password, 
-            hash = checkUser[0].password = dbPassword 
+            hash = checkUser[0].password = dbPassword = "$2b$10$Ms1Wfmf22tn1zceKoUTFrOo9c9JHppfKe4LTQHtweeYjP3jjzbcj2";
         */
 
-        let dbPassword = "$2b$10$Ms1Wfmf22tn1zceKoUTFrOo9c9JHppfKe4LTQHtweeYjP3jjzbcj2";
         try {
-            bcrypt.compare(password, dbPassword, function (err, result) {
+            bcrypt.compare(password, checkUser[0].password, function (err, result) {
                 if (err) {
                     return res.status(500).send({ message: 'Something went wrong!', data: null, err: err });
                 } else if (result == false) {

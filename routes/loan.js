@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/auth');
 const loanController = require('../controllers/loan');
-console.log('in loan.js')
 
 router
-    .get('/show', loanController.show)
+    .get('/show', auth, loanController.show)
 
 module.exports = router;
